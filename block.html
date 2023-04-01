@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			
+		}
+		.clock{
+			height: 500px;
+			width: 500px;
+			margin: 0 auto;
+			background-color: aliceblue;
+			background-image: url('img/01a6335b67b272a801206a351f31ca.jpg@1280w_1l_2o_100sh.jpg');
+			background-size: cover;
+			border: 50px;
+			margin-top: 100px;
+			position: relative;
+		}
+		.clock>div{
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			margin: auto;
+		}
+		.hour{
+			height: 35%;
+			width: 70%;
+			animation: run 43200s infinite linear;
+		}
+		.hour_div{	
+			height: 50%;
+			width: 6px;
+			background-color: black;
+			margin: 0 auto;
+		}
+		.min{
+			height: 50%;
+			width: 80%;
+			animation: run 3600s steps(60) infinite;
+		}
+		.min_div{
+			height: 50%;
+			width: 4px;
+			background-color: black;
+			margin: 0 auto;
+		}
+		.sec{
+			height: 60%;
+			width: 95%;
+			animation: run 60s steps(60) infinite;
+		}
+		.sec_div{
+			height: 50%;
+			width: 2px;
+			background-color: red;
+			margin: 0 auto;
+		}
+		@keyframes run {
+			from{
+				transform: rotateZ(0);
+			}
+			to{
+				transform: rotateZ(360deg);
+			}
+		}
+	</style>
+	<body>
+		<div class="clock">
+			<div class="hour">
+				<div class="hour_div"></div>
+			</div>
+			<div class="min">
+				<div class="min_div"></div>
+			</div>
+			<div class="sec">
+				<div class="sec_div"></div>
+			</div>
+		</div>
+	</body>
+</html>

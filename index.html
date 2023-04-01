@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<style>
+		.test{
+			height: 518px;
+			width: 133.5px;
+			background-image: url('img/11.png');
+			animation: telangpu 1s steps(6) infinite;
+			
+		}
+		
+		@keyframes telangpu{
+			from{
+				background-position: 0 0;
+			}
+			to{
+				background-position: -687.5px 0;
+			}
+		}
+		@keyframes telangpu2 {
+			from{
+				background-position: 100%;
+			}
+			to{
+				background-position: 0%;
+			}
+		}
+	</style>
+	<body>
+		<div class="test"></div>
+	</body>
+</html>
