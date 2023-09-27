@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<title>中秋快乐</title>
+ 
+</head>
+<body>
+<div class="ziti">
+	<div class="ziti_box">祝你中秋快乐！！！(｡･ω･｡)</div>
+</div>
+	
+<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/neon_text.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.second_neon').neonText({
+			textColor:'white',
+			textSize:'40pt',
+			neonHighlight:'white',
+			neonHighlightColor:'#008000',
+			neonHighlightHover:'#FFFF00',
+			neonFontHover:'white'
+		});
+	});
+</script>
+ 
+<div style="text-align:center;clear:both;padding-top:50px">
+<script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
+<script src="/follow.js" type="text/javascript"></script>
+</div>
+ 
+</body>
+</html>
+<style>
+    body, html { font-size: 100%; 	padding: 0; margin: 0;}
+ 
+*:after,
+*:before {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+ 
+.clearfix:before,
+.clearfix:after {
+	content: " ";
+	display: table;
+}
+ 
+.clearfix:after {
+	clear: both;
+}
+ 
+body{
+	background: #494A5F;
+	color: #D5D6E2;
+	font-weight: 500;
+	font-size: 1.05em;
+	font-family: "宋体";
+}
+a{ color: rgba(255, 255, 255, 0.6);outline: none;text-decoration: none;-webkit-transition: 0.2s;transition: 0.2s;}
+a:hover,a:focus{color:#74777b;text-decoration: none;}
+.zzsc-container{
+	margin: 0 auto;
+}
+.ziti{
+	width: 900px;
+	margin: 30px auto;
+}
+body {
+    background: none repeat scroll 0 0 #000000;
+}
+ 
+.ziti_box {
+    border: 1px solid;
+    border-radius: 10px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: table-cell;
+    float: right;
+    font-family:"Zeyada";
+    margin-left: 20px;
+	transition: text-shadow 0.5s ease 0s;
+    padding: 45px 25px;
+    text-align: center;
+    text-shadow: 0 0 10px #FFFFFF, 0 0 15px #FFFFFF, 0 0 30px #FFFFFF, 0 0 40px #008000, 0 0 70px #008000, 0 0 80px #008000, 0 0 100px #008000;
+    width: 270px;
+}
+.ziti_box:hover {
+    text-shadow: 0 0 10px #FFFFFF, 0 0 20px #FFFFFF, 0 0 30px #FFFFFF, 0 0 40px #FFFF00, 0 0 70px #FFFF00, 0 0 80px #FFFF00, 0 0 100px #FFFF00;
+}
+ 
+</style>
+<body>
+    <div class="moon"></div>
+</body>
+   
+<style>
+html,body {
+height: 100% ;
+margin: 0;
+padding: 0;
+    }
+    body {
+        background-color: #111;
+    }
+    .moon {
+        position: absolute;
+        z-index: 1;
+        width: 120px;
+        height: 120px;
+        background-image: linear-gradient(to right,#e4e0b7 10%,#fff 90%);
+        box-shadow: 0 0 60px 40px rgba(0,0,255,0.2),inset 0 0 20px 5px rgba(0,0,255,0.1);
+        border-radius: 50%;
+        filter: blur(2px);
+        animation: moon-move 200s linear infinite alternate;
+    }
+</style>
+<style>    @keyframes moon-move {
+        0% {
+            left: 10%;
+            top: 20%;
+        }
+        25% {
+            left: 30%;
+            top: 18%;
+        }
+        50% {
+            left: 48%;
+            top: 15%;
+        }
+        75% {
+            left: 68%;
+            top: 18%;
+        }
+        100% {
+            left: 85%;
+            top: 20%;
+        }
+    }
+</style>
+<body>
+	<!--创建画布-->
+    <canvas id="starfield" style="width: 1920px;height: 1080;">
+    </canvas>
+</body>
+<style>
+ 
+canvas{
+	position:fixed;/*设置定位*/
+	top:0;
+	left:0;
+	z-index:-1;/*使画布基于最低层*/
+	background:#0e1729;/*画布背景色*/
+}
+ 
+</style>
+ 
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script>
+        var context;
+        var arr = new Array();
+        var starCount = 800;
+        var rains = new Array();
+        var rainCount = 20;
+ 
+        function init() {
+            var stars = document.getElementById("stars");
+            windowWidth = window.innerWidth; //当前的窗口的高度
+            stars.width = windowWidth;
+            stars.height = window.innerHeight;
+            context = stars.getContext("2d");
+        }
+ 
+        //创建一个星星对象
+        var Star = function () {
+            this.x = windowWidth * Math.random();//横坐标
+            this.y = 5000 * Math.random();//纵坐标
+            this.text = ".";//文本
+            this.color = "#fff";//颜色
+            this.getColor = function () {
+                var _r = Math.random();
+                if (_r < 0.5) {
+                    this.color = "#333";
+                } else {
+                    this.color = "#fff";
+                }
+            }
+//初始化
+            this.init = function () {
+                this.getColor();
+            }
+//绘制
+            this.draw = function () {
+                context.fillStyle = this.color;
+                context.fillText(this.text, this.x, this.y);
+            }
+        }
+ 
+        //画月亮
+        function drawMoon() {
+            var moon = new Image();
+            moon.src = "./images/moon.jpg"
+            context.drawImage(moon, -5, -10);
+        }
+ 
+        //页面加载的时候
+        window.onload = function () {
+            init();
+//画星星
+            for (var i = 0; i < starCount; i++) {
+                var star = new Star();
+                star.init();
+                star.draw();
+                arr.push(star);
+            }
+//画流星
+            for (var i = 0; i < rainCount; i++) {
+                var rain = new MeteorRain();
+                rain.init();
+                rain.draw();
+                rains.push(rain);
+            }
+            drawMoon();//绘制月亮
+            playStars();//绘制闪动的星星
+            playRains();//绘制流星
+ 
+        }
+ 
+        //星星闪起来
+        function playStars() {
+            for (var n = 0; n < starCount; n++) {
+                arr[n].getColor();
+                arr[n].draw();
+            }
+ 
+            setTimeout("playStars()", 100);
+        }
+ 
+        /*流星雨开始*/
+        var MeteorRain = function () {
+            this.x = -1;
+            this.y = -1;
+            this.length = -1;//长度
+            this.angle = 30; //倾斜角度
+            this.width = -1;//宽度
+            this.height = -1;//高度
+            this.speed = 1;//速度
+            this.offset_x = -1;//横轴移动偏移量
+            this.offset_y = -1;//纵轴移动偏移量
+            this.alpha = 1; //透明度
+            this.color1 = "";//流星的色彩
+            this.color2 = ""; //流星的色彩
+            /****************初始化函数********************/
+            this.init = function () //初始化
+            {
+                this.getPos();
+                this.alpha = 1;//透明度
+                this.getRandomColor();
+//最小长度，最大长度
+                var x = Math.random() * 80 + 150;
+                this.length = Math.ceil(x);
+// x = Math.random()*10+30;
+                this.angle = 30; //流星倾斜角
+                x = Math.random() + 0.5;
+                this.speed = Math.ceil(x); //流星的速度
+                var cos = Math.cos(this.angle * 3.14 / 180);
+                var sin = Math.sin(this.angle * 3.14 / 180);
+                this.width = this.length * cos; //流星所占宽度
+                this.height = this.length * sin;//流星所占高度
+                this.offset_x = this.speed * cos;
+                this.offset_y = this.speed * sin;
+            }
+            /**************获取随机颜色函数*****************/
+            this.getRandomColor = function () {
+                var a = Math.ceil(255 - 240 * Math.random());
+//中段颜色
+                this.color1 = "rgba(" + a + "," + a + "," + a + ",1)";
+//结束颜色
+                this.color2 = "black";
+            }
+            /***************重新计算流星坐标的函数******************/
+            this.countPos = function ()//
+            {
+//往左下移动,x减少，y增加
+                this.x = this.x - this.offset_x;
+                this.y = this.y + this.offset_y;
+            }
+            /*****************获取随机坐标的函数*****************/
+            this.getPos = function () //
+            {
+//横坐标200--1200
+                this.x = Math.random() * window.innerWidth; //窗口高度
+//纵坐标小于600
+                this.y = Math.random() * window.innerHeight; //窗口宽度
+            }
+            /****绘制流星***************************/
+            this.draw = function () //绘制一个流星的函数
+            {
+                context.save();
+                context.beginPath();
+                context.lineWidth = 1; //宽度
+                context.globalAlpha = this.alpha; //设置透明度
+//创建横向渐变颜色,起点坐标至终点坐标
+                var line = context.createLinearGradient(this.x, this.y,
+                    this.x + this.width,
+                    this.y - this.height);
+//分段设置颜色
+                line.addColorStop(0, "white");
+                line.addColorStop(0.3, this.color1);
+                line.addColorStop(0.6, this.color2);
+                context.strokeStyle = line;
+//起点
+                context.moveTo(this.x, this.y);
+//终点
+                context.lineTo(this.x + this.width, this.y - this.height);
+                context.closePath();
+                context.stroke();
+                context.restore();
+            }
+            this.move = function () {
+//清空流星像素
+                var x = this.x + this.width - this.offset_x;
+                var y = this.y - this.height;
+                context.clearRect(x - 3, y - 3, this.offset_x + 5, this.offset_y + 5);
+// context.strokeStyle="red";
+// context.strokeRect(x,y-1,this.offset_x+1,this.offset_y+1);
+//重新计算位置，往左下移动
+                this.countPos();
+//透明度增加
+                this.alpha -= 0.002;
+//重绘
+                this.draw();
+            }
+        }
+ 
+        //绘制流星
+        function playRains() {
+ 
+            for (var n = 0; n < rainCount; n++) {
+                var rain = rains[n];
+                rain.move();//移动
+                if (rain.y > window.innerHeight) {//超出界限后重来
+                    context.clearRect(rain.x, rain.y - rain.height, rain.width, rain.height);
+                    rains[n] = new MeteorRain();
+                    rains[n].init();
+                }
+            }
+            setTimeout("playRains()", 2);
+        }
+ 
+        /*流星雨结束*/
+        
+    </script>
+    <style type="text/css">
+        body {
+            background-color: black;
+        }
+ 
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<canvas id="stars"></canvas>
+</body>
+</html>
